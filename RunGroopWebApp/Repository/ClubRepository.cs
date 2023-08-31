@@ -50,6 +50,7 @@ public class ClubRepository : IClubRepository
 
     public bool Save()
     {
-        throw new NotImplementedException();
+        var saved = _context.SaveChanges();
+        return saved > 0 ? true : false;
     }
 }

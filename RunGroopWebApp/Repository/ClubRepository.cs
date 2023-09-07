@@ -20,9 +20,14 @@ public class ClubRepository : IClubRepository
         return await _context.Clubs.ToListAsync();
     }
 
-    public async Task<Club> GetClub(int id)
+    public async Task<Club> GetByIdAsync(int id)
     {
         return await _context.Clubs.Include(c => c.Address).FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<Club> GetByIdAsyncNoTracking(int id)
+    {
+        return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
     }
 
     public async Task<IEnumerable<Club>> GetClubByCity(string city)

@@ -19,11 +19,16 @@ public class RaceRepository : IRaceRepository
         return await _context.Races.ToListAsync();
     }
 
-    public async Task<Race> GetRace(int id)
+    public async Task<Race> GetByIdAsync(int id)
     {
         return await _context.Races.Include(c => c.Address).FirstOrDefaultAsync(r => r.Id == id);
     }
-    
+
+    public async Task<Race> GetByIdAsyncNoTracking(int id)
+    {
+        return await _context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync();
+    }
+
     public async Task<IEnumerable<Race>> GetRaceByCity(string city)
     {
         return await _context.Races.Where(x => x.Address.City.Contains(city)).ToListAsync();

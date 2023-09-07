@@ -5,7 +5,8 @@ namespace RunGroopWebApp.Interfaces;
 public interface IClubRepository
 {
     Task<IEnumerable<Club>> GetClubs();
-    Task<Club> GetClub(int id);
+    Task<Club> GetByIdAsync(int id);
+    Task<Club> GetByIdAsyncNoTracking(int id);
     Task<IEnumerable<Club>> GetClubByCity(string city);
     bool Add(Club club);
     bool Update(Club club);

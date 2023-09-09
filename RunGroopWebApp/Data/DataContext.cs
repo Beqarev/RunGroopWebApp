@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Models;
 
 namespace RunGroopWebApp.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext<AppUser>
 {
     public DataContext(DbContextOptions<DataContext> options): base(options)
     {

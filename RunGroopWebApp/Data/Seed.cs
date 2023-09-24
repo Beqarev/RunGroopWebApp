@@ -151,12 +151,12 @@ namespace RunGroopWebApp.Data
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
                 if (appUser == null)
                 {
-                    var newAppUser = new AppUser()
+                    var newAppUser = new AppUser
                     {
                         UserName = "app-user",
                         Email = appUserEmail,
                         EmailConfirmed = true,
-                        Address = new Address()
+                        Address = new Address
                         {
                             Street = "123 Main St",
                             City = "Charlotte",
